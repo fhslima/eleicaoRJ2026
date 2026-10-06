@@ -2,7 +2,7 @@ const numberFormat = new Intl.NumberFormat("pt-BR");
 const normalize = value => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR").replace(/[^a-z0-9]/g, "");
 const votesByName = new Map(window.voteRows.map(([name, eduardo, douglas, garotinho]) => [normalize(name), { name, eduardo, douglas, garotinho }]));
 const totals = window.voteRows.reduce((sum, [, eduardo, douglas, garotinho]) => ({ eduardo: sum.eduardo + eduardo, douglas: sum.douglas + douglas, garotinho: sum.garotinho + garotinho }), { eduardo: 0, douglas: 0, garotinho: 0 });
-const map = L.map("map", { zoomControl: false, scrollWheelZoom: false, doubleClickZoom: false, boxZoom: false, keyboard: false, dragging: true, tap: true, zoomSnap: 0.25, zoomDelta: 0.25 }).setView([-22.35, -42.65], 7);
+const map = L.map("map", { attributionControl: false, zoomControl: false, scrollWheelZoom: false, doubleClickZoom: false, boxZoom: false, keyboard: false, dragging: true, tap: true, zoomSnap: 0.25, zoomDelta: 0.25 }).setView([-22.35, -42.65], 7);
 L.control.zoom({ position: "bottomright" }).addTo(map);
 const geojsonUrl = "https://servicodados.ibge.gov.br/api/v3/malhas/estados/33?formato=application/vnd.geo%2Bjson&qualidade=minima&intrarregiao=municipio";
 const namesUrl = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/33/municipios";
