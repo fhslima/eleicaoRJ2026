@@ -57,7 +57,11 @@ function featureStyle(votes, feature) {
 }
 
 function selectLayer(layer, votes) {
-  if (selectedLayer && selectedLayer !== layer) selectedLayer.setStyle(featureStyle(selectedLayer.votes, selectedLayer.feature));
+  if (selectedLayer && selectedLayer !== layer) {
+    const previousLayer = selectedLayer;
+    selectedLayer = null;
+    previousLayer.setStyle(featureStyle(previousLayer.votes, previousLayer.feature));
+  }
   selectedLayer = layer;
   selectedLayer.votes = votes;
   layer.setStyle({ ...featureStyle(votes, layer.feature), color: "#142b36", weight: 2.2 });
