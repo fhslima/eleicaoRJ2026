@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Votação municipal de Eduardo Paes, Douglas Ruas e Anthony Garotinho no Rio de Janeiro.">
+  <title>Rio de Janeiro | Voto por município</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Mapa de votos, início"><span class="brand-symbol">RJ</span><span>Voto por município</span></a>
+    <span class="election-tag"><i></i> GOVERNADOR · 1º TURNO · 2026</span>
+  </header>
+  <main class="layout">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Rio de Janeiro / Eleições 2026</p>
+      <h1 id="page-title">A disputa,<br><em>município a município.</em></h1>
+      <p class="intro-copy">Quem liderou em cada cidade? Explore o mapa e compare os votos dos três candidatos.</p>
+      <div class="state-total" aria-label="Totais estaduais da planilha">
+        <div><span class="total-dot paes"></span><span class="total-name">Eduardo Paes</span><strong id="total-eduardo">—</strong></div>
+        <div><span class="total-dot ruas"></span><span class="total-name">Douglas Ruas</span><strong id="total-douglas">—</strong></div>
+        <div><span class="total-dot garotinho"></span><span class="total-name">Anthony Garotinho</span><strong id="total-garotinho">—</strong></div>
+      </div>
+    </section>
+    <section class="explorer" aria-label="Mapa e votação municipal">
+      <div class="explorer-head">
+        <div><p class="eyebrow">Mapa eleitoral</p><h2>Resultado por município</h2></div>
+        <label class="search-box" for="municipality-search"><span aria-hidden="true">⌕</span><input id="municipality-search" type="search" placeholder="Buscar município" autocomplete="off"><kbd>/</kbd></label>
+      </div>
+      <div class="map-layout">
+        <div class="map-wrap"><div id="map" role="application" aria-label="Mapa interativo dos municípios do estado do Rio de Janeiro"></div><div id="map-message" class="map-message" role="status">Carregando limites municipais…</div></div>
+        <aside id="detail-panel" class="detail-panel" aria-live="polite">
+          <div class="detail-default"><span class="target-icon" aria-hidden="true">+</span><p class="eyebrow">Explore o mapa</p><h3>Selecione um município</h3><p>Os votos de cada candidato aparecem aqui.</p></div>
+          <div class="detail-content" hidden>
+            <p class="eyebrow">Apuração municipal</p><h3 id="detail-name"></h3><p class="winner-line"><span id="winner-mark"></span><span id="winner-name"></span><strong id="winner-share"></strong></p>
+            <div class="vote-list">
+              <div class="vote-row"><span class="candidate-mark paes"></span><span>Eduardo Paes</span><strong id="detail-eduardo"></strong></div>
+              <div class="vote-row"><span class="candidate-mark ruas"></span><span>Douglas Ruas</span><strong id="detail-douglas"></strong></div>
+              <div class="vote-row"><span class="candidate-mark garotinho"></span><span>Anthony Garotinho</span><strong id="detail-garotinho"></strong></div>
+            </div>
+            <p class="share-note">Percentual calculado sobre os votos destes três candidatos.</p>
+          </div>
+        </aside>
+      </div>
+      <div class="map-footer">
+        <div class="legend" aria-label="Legenda de cores">
+          <span class="legend-title">Vencedor · % dos três candidatos</span>
+          <span class="legend-item"><i class="legend-swatch paes-soft"></i>Eduardo Paes</span>
+          <span class="legend-scale paes-scale" aria-hidden="true"></span>
+          <span class="legend-item"><i class="legend-swatch ruas-soft"></i>Douglas Ruas</span>
+          <span class="legend-scale ruas-scale" aria-hidden="true"></span>
+        </div>
+        <p id="map-count">— municípios</p>
+      </div>
+    </section>
+  </main>
+  <footer><span>Dados de votação: planilha fornecida · Limites municipais: IBGE</span><a href="https://servicodados.ibge.gov.br/api/v3/malhas/estados/33?formato=application/vnd.geo%2Bjson&qualidade=minima&intrarregiao=municipio" target="_blank" rel="noreferrer">Fonte das geometrias ↗</a></footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
