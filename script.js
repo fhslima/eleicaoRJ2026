@@ -25,13 +25,12 @@ function winnerFor(votes) {
 }
 
 function fillDetail(votes) {
-  const { winner, share } = winnerFor(votes);
+  const { winner } = winnerFor(votes);
   detailPanel.querySelector(".detail-default").hidden = true;
   detailPanel.querySelector(".detail-content").hidden = false;
   document.querySelector("#detail-name").textContent = votes.name;
   document.querySelector("#winner-mark").className = `winner-mark ${winner}`;
   document.querySelector("#winner-name").textContent = winner === "eduardo" ? "Eduardo Paes" : "Douglas Ruas";
-  document.querySelector("#winner-share").textContent = `${(share * 100).toLocaleString("pt-BR", { maximumFractionDigits: 1 })}%`;
   document.querySelector("#detail-eduardo").textContent = numberFormat.format(votes.eduardo);
   document.querySelector("#detail-douglas").textContent = numberFormat.format(votes.douglas);
   document.querySelector("#detail-garotinho").textContent = numberFormat.format(votes.garotinho);
